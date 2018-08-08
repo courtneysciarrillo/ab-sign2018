@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ee6e38c2dd684007b1a8ce6805b10077" Name="Diagram1">
+        <EntityTypeShape EntityType="AbSignV2Model.Collection" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbSignV2Model.Image" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbSignV2Model.Profile" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbSignV2Model.Sign" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbSignV2Model.sysdiagram" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbSignV2Model.TestScore" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="AbSignV2Model.FK_Collections_Profiles" ManuallyRouted="false" />
+        <AssociationConnector Association="AbSignV2Model.FK_Collections_Signs" ManuallyRouted="false" />
+        <AssociationConnector Association="AbSignV2Model.FK_Images_Signs" ManuallyRouted="false" />
+        <AssociationConnector Association="AbSignV2Model.FK_TestScores_Profiles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

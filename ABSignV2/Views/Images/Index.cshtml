@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ABSignV2.Image>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageBin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sign.SignName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                @if (item.ImageBin != null)
+                {
+                    var base64 = Convert.ToBase64String(item.ImageBin);
+                    var imgsrc = string.Format("data:image/jpeg; base64,{0}", base64);
+                    <img src="@imgsrc" style="max-width:100px;max-height:100px;" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sign.SignName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ImageID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ImageID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ImageID })
+            </td>
+        </tr>
+     }
+    
+
+</table>

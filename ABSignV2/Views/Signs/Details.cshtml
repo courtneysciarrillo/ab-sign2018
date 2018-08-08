@@ -1,0 +1,34 @@
+﻿@model ABSignV2.Sign
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sign</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SignName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SignName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminUpload)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminUpload)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SignID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
