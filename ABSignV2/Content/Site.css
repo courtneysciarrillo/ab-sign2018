@@ -22,3 +22,40 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*John's CSS for flashcard flip in images/study index*/
+
+.flashcard {
+    width: 250px;
+    height: 180px;
+}
+
+    .flashcard > .flashFront {
+        border: solid black 2px;
+        position: absolute;
+        transform: perspective(600px) rotateY(0deg);
+        width: 250px;
+        height: 180px;
+        background-color: lightblue;
+        backface-visibility: hidden;
+        transition: transform .5s linear 0s;
+    }
+
+    .flashcard > .flashBack {
+        border: solid black 2px;
+        position: absolute;
+        transform: perspective(600px) rotateY(180deg);
+        width: 250px;
+        height: 180px;
+        background-color: lightgray;
+        backface-visibility: hidden;
+        transition: transform .5s linear 0s;
+    }
+
+    .flashcard:hover > .flashFront {
+        transform: perspective(600px) rotateY(-180deg);
+    }
+
+    .flashcard:hover > .flashBack {
+        transform: perspective(600px) rotateY(0deg);
+    }

@@ -29,7 +29,6 @@ namespace ABSignV2
         public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Profile> Profiles { get; set; }
         public virtual DbSet<Sign> Signs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TestScore> TestScores { get; set; }
     }
 }

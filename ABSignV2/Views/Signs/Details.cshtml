@@ -25,8 +25,11 @@
         <dd>
             @Html.DisplayFor(model => model.AdminUpload)
         </dd>
-
+        @Html.ActionLink("Add image for sign", "Create", "Images", new { id = Model.SignID }, null)
     </dl>
+
+    <img src="@Model.GetImageDataUri()" />
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.SignID }) |

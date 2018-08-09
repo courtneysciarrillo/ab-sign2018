@@ -48,11 +48,12 @@ namespace ABSignV2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ImageID,ImageBin,SignID")] Image image, HttpPostedFileBase image1)
+        public ActionResult Create([Bind(Include = "ImageID,ImageBin,SignID")] Image image, HttpPostedFileBase image1, int? id)
         {
             if (ModelState.IsValid)
             {
                 image.ImageBin = new byte[image1.ContentLength];
+                image.SignID = id;
                 image1.InputStream.Read(image.ImageBin, 0, image1.ContentLength);
                 //string id = User.Identity.GetUserId(); //saves currently logged in user id to string id
                 db.Images.Add(image);
