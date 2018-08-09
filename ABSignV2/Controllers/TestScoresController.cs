@@ -7,12 +7,27 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ABSignV2;
+using Microsoft.AspNet.Identity;
 
 namespace ABSignV2.Controllers
 {
     public class TestScoresController : Controller
     {
         private AbSignV2Entities db = new AbSignV2Entities();
+
+        [HttpPost]
+        public JsonResult SaveScore(TestScore testScore)
+        {
+            var user = HttpContext.User.Identity.GetUserId();
+            var proID = (from key in db.Profiles
+                         where key.UserName == user
+                         select key.ProfileID).Single();
+            testScore.ProfileID = proID;
+
+            db.TestScores.Add(testScore);
+            db.SaveChanges();
+            return Json(testScore.Score);
+        }
 
         public ActionResult QuizView()
         {

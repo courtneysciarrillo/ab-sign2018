@@ -86,7 +86,31 @@ if(rnd==3){q3=questionBank[questionNumber][1];q1=questionBank[questionNumber][2]
 	function displayFinalSlide(){
 		
 		$(stage).append('<div class="questionText">You have finished the quiz!<br><br>Total questions: '+numberOfQuestions+'<br>Correct answers: '+score+'</div>');
-		
+
+        $(stage).append(
+            $('<button/>', {
+                text: 'Save Score',
+                id: 'btnSave',
+                click: function () {
+                    var yourscore = { Score: score }
+                    //debugger;
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/TestScores/SaveScore",
+                        data: JSON.stringify(yourscore),
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            alert("your score: " + data);
+                        },
+                        error: function (result) {
+                            alert("Something Went Wrong");
+                        }
+                    });
+                }
+            })
+        );
+
 	}//display final slide
 	
 	
