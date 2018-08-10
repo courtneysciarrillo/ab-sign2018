@@ -30,5 +30,6 @@ namespace ABSignV2
         public virtual ICollection<Collection> Collections { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TestScore> TestScores { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

@@ -100,6 +100,16 @@
           <Property Name="AdminUpload" Type="bit" />
           <Property Name="username" Type="nvarchar" MaxLength="128" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TestScores">
           <Key>
             <PropertyRef Name="TestScoreID" />
@@ -107,6 +117,7 @@
           <Property Name="TestScoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Score" Type="int" />
           <Property Name="ProfileID" Type="int" />
+          <Property Name="username" Type="nvarchar" MaxLength="128" />
         </EntityType>
         <Association Name="FK_Collections_Profiles">
           <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
@@ -200,6 +211,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Profiles_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="Profiles" Type="Self.Profiles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profiles">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TestScores_Profiles">
           <End Role="Profiles" Type="Self.Profiles" Multiplicity="0..1" />
           <End Role="TestScores" Type="Self.TestScores" Multiplicity="*" />
@@ -223,6 +246,7 @@
           <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Signs" EntityType="Self.Signs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TestScores" EntityType="Self.TestScores" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Collections_Profiles" Association="Self.FK_Collections_Profiles">
             <End Role="Profiles" EntitySet="Profiles" />
@@ -251,6 +275,10 @@
           <AssociationSet Name="FK_Images_Signs" Association="Self.FK_Images_Signs">
             <End Role="Signs" EntitySet="Signs" />
             <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profiles_AspNetUsers" Association="Self.FK_Profiles_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="Profiles" EntitySet="Profiles" />
           </AssociationSet>
           <AssociationSet Name="FK_TestScores_Profiles" Association="Self.FK_TestScores_Profiles">
             <End Role="Profiles" EntitySet="Profiles" />
@@ -290,6 +318,7 @@
           <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Collections" Relationship="Self.FK_Collections_Profiles" FromRole="Profiles" ToRole="Collections" />
           <NavigationProperty Name="TestScores" Relationship="Self.FK_TestScores_Profiles" FromRole="Profiles" ToRole="TestScores" />
+          <NavigationProperty Name="AspNetUser" Relationship="AbSignV2Model.FK_Profiles_AspNetUsers" FromRole="Profile" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="Sign">
           <Key>
@@ -310,6 +339,7 @@
           <Property Name="Score" Type="Int32" />
           <Property Name="ProfileID" Type="Int32" />
           <NavigationProperty Name="Profile" Relationship="Self.FK_TestScores_Profiles" FromRole="TestScores" ToRole="Profiles" />
+          <Property Name="username" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Collections_Profiles">
           <End Role="Profiles" Type="Self.Profile" Multiplicity="0..1" />
@@ -394,10 +424,21 @@
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
           </AssociationSet>
+<<<<<<< HEAD
+=======
+          <AssociationSet Name="FK_Profiles_AspNetUsers" Association="AbSignV2Model.FK_Profiles_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+>>>>>>> fe2ee90eab4bbba92156e375d166eb39a47cc76e
           <AssociationSet Name="AspNetUserRoles" Association="AbSignV2Model.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
           </AssociationSet>
+<<<<<<< HEAD
+=======
+          <EntitySet Name="sysdiagrams" EntityType="AbSignV2Model.sysdiagram" />
+>>>>>>> fe2ee90eab4bbba92156e375d166eb39a47cc76e
         </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
@@ -456,6 +497,10 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUserClaims" Relationship="AbSignV2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="AbSignV2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+<<<<<<< HEAD
+=======
+          <NavigationProperty Name="Profiles" Relationship="AbSignV2Model.FK_Profiles_AspNetUsers" FromRole="AspNetUser" ToRole="Profile" />
+>>>>>>> fe2ee90eab4bbba92156e375d166eb39a47cc76e
           <NavigationProperty Name="AspNetRoles" Relationship="AbSignV2Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -486,10 +531,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+=======
+        <Association Name="FK_Profiles_AspNetUsers">
+          <End Type="AbSignV2Model.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="AbSignV2Model.Profile" Role="Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+>>>>>>> fe2ee90eab4bbba92156e375d166eb39a47cc76e
         <Association Name="AspNetUserRoles">
           <End Type="AbSignV2Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="AbSignV2Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
+<<<<<<< HEAD
+=======
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+>>>>>>> fe2ee90eab4bbba92156e375d166eb39a47cc76e
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -537,6 +610,7 @@
           <EntitySetMapping Name="TestScores">
             <EntityTypeMapping TypeName="AbSignV2Model.TestScore">
               <MappingFragment StoreEntitySet="TestScores">
+                <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="TestScoreID" ColumnName="TestScoreID" />
                 <ScalarProperty Name="Score" ColumnName="Score" />
                 <ScalarProperty Name="ProfileID" ColumnName="ProfileID" />
@@ -606,6 +680,20 @@
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
+<<<<<<< HEAD
+=======
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AbSignV2Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+>>>>>>> fe2ee90eab4bbba92156e375d166eb39a47cc76e
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
