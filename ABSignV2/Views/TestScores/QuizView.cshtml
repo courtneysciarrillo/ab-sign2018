@@ -1,7 +1,17 @@
 ﻿@model IEnumerable<ABSignV2.TestScore>
 
-<div id="topbar">HTML5 Picture Quiz</div>
+<div id="topbar">ASL Quiz</div>
 <div class="spacer"></div>
+
+<form name="quizSelector">
+    <select id="quizSelector" name="quizSelector">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <br><br>
+    <button type="button" onclick="ChoseTest()">Submit Test</button>
+</form>
 
 <div id="navContent">
 
@@ -12,3 +22,4 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="~/Scripts/controller.js"></script>
 <script src="~/Scripts/jquery.js"></script>
+
