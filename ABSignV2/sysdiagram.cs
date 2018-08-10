@@ -12,13 +12,12 @@ namespace ABSignV2
     using System;
     using System.Collections.Generic;
     
-    public partial class TestScore
+    public partial class sysdiagram
     {
-        public int TestScoreID { get; set; }
-        public Nullable<int> Score { get; set; }
-        public Nullable<int> ProfileID { get; set; }
-        public string username { get; set; }
-    
-        public virtual Profile Profile { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

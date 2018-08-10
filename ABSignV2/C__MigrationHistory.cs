@@ -12,13 +12,11 @@ namespace ABSignV2
     using System;
     using System.Collections.Generic;
     
-    public partial class TestScore
+    public partial class C__MigrationHistory
     {
-        public int TestScoreID { get; set; }
-        public Nullable<int> Score { get; set; }
-        public Nullable<int> ProfileID { get; set; }
-        public string username { get; set; }
-    
-        public virtual Profile Profile { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }
