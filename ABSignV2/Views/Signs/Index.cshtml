@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<ABSignV2.Sign>
+@using Microsoft.AspNet.Identity
 
     @{
-    ViewBag.Title = "Index";
+        ViewBag.Title = "Index";
     }
 
     <h2>Index</h2>
@@ -20,20 +21,24 @@
             <th></th>
         </tr>
 
+
         @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SignName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AdminUpload)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.SignID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.SignID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.SignID })
-            </td>
-        </tr>
+            if (item.AdminUpload == true || item.username == HttpContext.Current.User.Identity.GetUserId() ||
+                item.username == null ) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SignName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AdminUpload)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SignID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.SignID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SignID })
+                    </td>
+                </tr>
+            }
         }
 
     </table>

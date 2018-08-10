@@ -52,10 +52,23 @@ textarea {
         transition: transform .5s linear 0s;
     }
 
-    .flashcard:hover > .flashFront {
+    .flashcard:hover > .flashFront{
         transform: perspective(600px) rotateY(-180deg);
     }
 
-    .flashcard:hover > .flashBack {
+    .flashcard:hover > .flashBack{
         transform: perspective(600px) rotateY(0deg);
     }
+
+    /*Flashcard Index grid*/
+#flashGrid {
+    display: grid;
+    grid-template-areas: ". . .";
+    grid-gap: 10px;
+}
+
+.flashcard .flashFront, .flashcard .flashBack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
