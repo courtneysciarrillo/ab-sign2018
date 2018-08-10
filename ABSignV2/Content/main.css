@@ -1,3 +1,4 @@
+
 html, body {
     margin: 0;
     padding: 0;
@@ -46,9 +47,162 @@ html, body {
 
     
 
+/*This is the beginning of the hex navbar CSS*/ 
 
+.menu-container {
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
 
+.hex-wrapper {
+    display: inline-block;
+}
 
+.hex-row {
+    clear: left;
+}
+
+.shift {
+    margin-left: 98px;
+}
+
+.hexagon {
+    float: left;
+    position: relative;
+    margin: 30px 3px;
+    width: 190px;
+    height: 110px;
+    background-color: red;
+    background-position: center center;
+    z-index: 1;
+    /* Text styling */
+    line-height: 110px;
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 2em;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    color: black;
+    /*color: rgba(0, 0, 0, .5);*/
+    cursor: pointer;
+    transition: color 500ms ease, text-shadow 500ms ease, background-color 500ms ease, -webkit-transform 1s ease-in-out;
+}
+
+    .hexagon:hover {
+        color: #fff;
+        text-shadow: 0 0 10px white;
+        background-color: #888;
+    }
+
+    .hexagon .face1,
+    .hexagon .face2 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: inherit;
+        z-index: -1;
+        /* Keeps borders smooth in webkit */
+        backface-visibility: hidden;
+    }
+
+        .hexagon .face1:before,
+        .hexagon .face2:before {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: inherit;
+        }
+
+    .hexagon .face1 {
+        transform: rotate(60deg);
+    }
+
+        .hexagon .face1:before {
+            left: 0;
+            transform-origin: left top;
+            transform: rotate(-60deg) translate(-110px, 0);
+        }
+
+    .hexagon .face2 {
+        transform: rotate(-60deg);
+    }
+
+        .hexagon .face2:before {
+            right: 0;
+            transform-origin: right top;
+            transform: rotate(60deg) translate(110px, 0);
+        }
+
+    .hexagon#nav-register {
+        background-color: blue;
+    }
+
+        .hexagon#nav-register:hover {
+            color: #fff;
+            text-shadow: 0 0 10px white;
+            background-color: #888;
+        }
+
+    .hexagon#nav-library {
+        background-color: mediumorchid;
+    }
+
+        .hexagon#nav-library:hover {
+            color: #fff;
+            text-shadow: 0 0 10px white;
+            background-color: #888;
+        }
+
+    .hexagon#nav-blank {
+        background-color: white;
+    }
+
+    .hexagon#nav-flashcards {
+        background-color: yellow;
+    }
+
+        .hexagon#nav-flashcards:hover {
+            color: #fff;
+            text-shadow: 0 0 10px white;
+            background-color: #888;
+        }
+
+    .hexagon#nav-login {
+        background-color: lime;
+    }
+
+        .hexagon#nav-login:hover {
+            color: #fff;
+            text-shadow: 0 0 10px white;
+            background-color: #888;
+        }
+
+    .hexagon#nav-progress {
+        background-color: cornflowerblue;
+    }
+
+        .hexagon#nav-progress:hover {
+            color: #fff;
+            text-shadow: 0 0 10px white;
+            background-color: #888;
+        }
+
+    .hexagon#nav-quiz {
+        background-color: red;
+    }
+
+        .hexagon#nav-quiz:hover {
+            color: #fff;
+            text-shadow: 0 0 10px white;
+            background-color: #888;
+        }
+
+/*This is the end of the hex navbar CSS*/
 
 
 
