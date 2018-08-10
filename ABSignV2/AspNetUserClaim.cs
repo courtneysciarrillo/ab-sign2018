@@ -12,13 +12,13 @@ namespace ABSignV2
     using System;
     using System.Collections.Generic;
     
-    public partial class TestScore
+    public partial class AspNetUserClaim
     {
-        public int TestScoreID { get; set; }
-        public Nullable<int> Score { get; set; }
-        public Nullable<int> ProfileID { get; set; }
-        public string username { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public virtual Profile Profile { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

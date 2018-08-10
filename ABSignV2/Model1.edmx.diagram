@@ -14,6 +14,16 @@
         <AssociationConnector Association="AbSignV2Model.FK_Collections_Signs" ManuallyRouted="false" />
         <AssociationConnector Association="AbSignV2Model.FK_Images_Signs" ManuallyRouted="false" />
         <AssociationConnector Association="AbSignV2Model.FK_TestScores_Profiles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AbSignV2Model.C__MigrationHistory" Width="1.5" PointX="5.625" PointY="1.625" />
+        <EntityTypeShape EntityType="AbSignV2Model.AspNetRole" Width="1.5" PointX="1.5" PointY="8" />
+        <EntityTypeShape EntityType="AbSignV2Model.AspNetUserClaim" Width="1.5" PointX="3" PointY="13.5" />
+        <EntityTypeShape EntityType="AbSignV2Model.AspNetUserLogin" Width="1.5" PointX="3" PointY="10.875" />
+        <EntityTypeShape EntityType="AbSignV2Model.AspNetUser" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="AbSignV2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="AbSignV2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="AbSignV2Model.FK_Profiles_AspNetUsers" />
+        <AssociationConnector Association="AbSignV2Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="AbSignV2Model.sysdiagram" Width="1.5" PointX="4.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

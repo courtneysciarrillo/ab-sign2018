@@ -1,39 +1,25 @@
 ﻿@model IEnumerable<ABSignV2.TestScore>
+@using Microsoft.AspNet.Identity
 
-@{
-    ViewBag.Title = "Index";
-}
+<div class="container">
+<h2>Activity</h2>
+    <ol>
+        <div class="row">
+            <div class="col-4">
+                @foreach (var item in Model)
+                {
+                    if (item.username == HttpContext.Current.User.Identity.GetUserId() || item.username == null)
+                    {
+                        <li>
+                            <div class="progress" style="height:30px">
+                                <div class="progress-bar" style="width:@ABSignV2.TestScore.GetPercent(item.Score)%">@ABSignV2.TestScore.GetPercent(item.Score)%</div>
+                            </div>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Score)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Profile.FirstName)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Score)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Profile.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TestScoreID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TestScoreID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TestScoreID })
-        </td>
-    </tr>
-}
-
-</table>
+                            @Html.ActionLink("Details", "Details", new { id = item.TestScoreID })
+                        </li>
+                    }
+                }
+            </div>
+        </div>
+    </ol>
+</div>

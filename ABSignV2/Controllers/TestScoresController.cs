@@ -18,12 +18,12 @@ namespace ABSignV2.Controllers
         [HttpPost]
         public JsonResult SaveScore(TestScore testScore)
         {
-            var user = HttpContext.User.Identity.GetUserId();
-            var proID = (from key in db.Profiles
-                         where key.UserName == user
-                         select key.ProfileID).Single();
-            testScore.ProfileID = proID;
-
+            //var user = HttpContext.User.Identity.GetUserId();
+            //var proID = (from key in db.Profiles
+            //             where key.UserName == user
+            //             select key.ProfileID).Single();
+            //testScore.ProfileID = proID;
+            testScore.username = HttpContext.User.Identity.GetUserId();
             db.TestScores.Add(testScore);
             db.SaveChanges();
             return Json(testScore.Score);
@@ -69,10 +69,11 @@ namespace ABSignV2.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "TestScoreID,Score,ProfileID")] TestScore testScore)
+        public ActionResult Create([Bind(Include = "TestScoreID,Score,ProfileID,username")] TestScore testScore)
         {
             if (ModelState.IsValid)
             {
+                testScore.username = HttpContext.User.Identity.GetUserId();
                 db.TestScores.Add(testScore);
                 db.SaveChanges();
                 return RedirectToAction("Index");
